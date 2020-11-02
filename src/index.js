@@ -32,10 +32,10 @@ const server = new GraphQLServer({
   },
 });
 
-server.express.use(express.static(path.join(__dirname,'../../hackernews-react-apollo/build')))
+server.express.use(express.static(path.join(__dirname,'../build')))
 server.express.get("/*",(req,res,next) => {
   console.log("HI")
-  res.sendFile(path.join(__dirname,"../../","hackernews-react-apollo/build/index.html"))
+  res.sendFile(path.join(__dirname,"../","build/index.html"))
 })
 const options = {
   endpoint:'/graphql',
