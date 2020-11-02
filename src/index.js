@@ -8,6 +8,9 @@ const Subscription = require("./resolvers/Subscription")
 const Vote = require('./resolvers/Vote')
 const prisma = new PrismaClient();
 const pubsub = new PubSub()
+const express = require('express')
+const path = require('path')
+
 const resolvers = {
   Query,
   Mutation,
@@ -28,4 +31,16 @@ const server = new GraphQLServer({
     };
   },
 });
-server.start(() => console.log("Server is running on http://localhost:4000"));
+
+server.express.use(express.static(path.join(__dirname,'../../hackernews-react-apollo/build')))
+server.express.get("/*",(req,res,next) => {
+  console.log("HI")
+  res.sendFile(path.join(__dirname,"../../","hackernews-react-apollo/build/index.html"))
+})
+const options = {
+  endpoint:'/graphql',
+  subscriptions:'/subscriptions',
+  playground:'/playground'
+}
+
+server.start(options,options => console.log("Server is running on http://localhost:4000"));

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "start":"node src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,7 @@
     "@prisma/client": "^2.10.0",
     "apollo-link-ws": "^1.0.20",
     "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
     "graphql-yoga": "^1.18.3",
     "jsonwebtoken": "^8.5.1",
     "subscriptions-transport-ws": "^0.9.18"
